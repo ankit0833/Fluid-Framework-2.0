@@ -561,9 +561,21 @@ customElements.define("site-overlay", siteOverlay);
     if(sliderElement.hasAttribute('data-nav') && thumbSlider){
       thumbSlider.controller.control = slider;
     }
+    let thumbSliderOptions = thumbSlider.getAttribute('data-slider');
+      thumbSliderOptions = JSON.parse(thumbSliderOptions);
+      thumbSlider = new Swiper(thumbSlider, thumbSliderOptions);
+
+      sliderOptions.thumbs = {
+        swiper: thumbSlider
+      }
   }
 }
 customElements.define('slider-element', sliderElement);
+
+
+ 
+
+
 
 {%- if settings.enable_custom_tabify -%}
 /**

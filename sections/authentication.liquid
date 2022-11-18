@@ -1,0 +1,97 @@
+
+<style>
+    .error_val{
+      margin-bottom: 20px;
+     padding: 0px;
+     text-align: center;
+     font-size: 18px;
+     transition: all 0.5s ease;
+     color:red;
+    }
+</style>
+
+<section class="section-content">
+  <div class="container">
+    <div class="row">
+        <div class="col-6">
+        <h3 class="section-title mb-3">Login</h3>
+        <custom-login>
+          
+           <div class="form-group form-floating">
+             <input type="text" data-login-email name="customer[email]" class="form-control">
+             <label for="email">Email</label>
+             <span class="error_val" error_message6></span>
+           </div>  
+           <div class="form-group form-floating">
+             <input data-login-password type="text" name="customer[password]" class="form-control">
+             <label for="password">password</label>
+             <span class="error_val" error_message7></span>
+           </div>
+           <div class="submit">
+              <input type="submit" class="btn btn-primary btn-block" login-btn value="Sign In">  
+           </div>
+           
+        </custom-login>
+        </div>
+        <div class="col-6" id="customerRegisterForm">
+         <h3 class="section-title mb-3">Create an account</h3>
+        
+            <custom-register>
+                {% form 'create_customer' %}
+                <div class="form-group form-floating">
+                    <input id="registerCustomerFirstName" type="text" class="form-control" data-first-name  name="customer[first_name]">
+                    <label for="first-name">First Name</label>
+                    <span class="error_val" error_message1></span>
+                </div>   
+                <div class="form-group form-floating">
+                <input id="customerLastName" type="text" class="form-control" data-last-name name="customer[last_name]">
+                <label for="last-name">Last Name</label> 
+                <span class="error_val" error_message2></span>
+                </div>   
+                <div class="form-group form-floating">
+                <input id="registerCustomerEmail" type="text" class="form-control" data-email name="customer[email]">
+                <label for="email">Email</label>
+                <span class="error_val" error_message3></span>
+                </div>
+                <div class="form-group form-floating">
+                    <input id="registerCustomerPassword" type="text" class="form-control" data-password name="customer[password]">
+                    <label for="password">Password</label>
+                    <span class="error_val" error_message4></span>
+                </div>   
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" data-confirm-password name="customer[confirm_password]">   
+                    <label class="form-group form-floating" for="confirm-password">Confirm Password</label>
+                    <span class="error_message5 error_val" error_message5></span>
+                </div>   
+                <div class="submit">
+                    <input type="submit" class="btn btn-primary btn-block custom_check" register-btn value="submit">
+                </div>   
+            {% endform %}
+            </custom-register>
+ 
+        </div>
+    </div>
+   </div>
+</section>
+
+{{'auth.js' | asset_url | script_tag }}
+
+
+{% schema %}
+ {
+    "name":"authentication",
+    "settings":[
+        {
+           "type":"checkbox",
+           "label":"Enable Form",
+           "id":"enable" 
+        }
+         ],
+           "presets":[
+            {
+                "name":"authentication"
+            }
+           ]
+   
+    } 
+{% endschema %}

@@ -221,7 +221,7 @@
   }
 
   .swiper-pagination {
-    position: absolute;
+    /* position: absolute; */
     text-align: center;
     transition: 300ms opacity;
     transform: translate3d(0, 0, 0);
@@ -615,7 +615,7 @@
   }
 
   .header-slider-desktop .swiper-pagination .swiper-pagination-bullet{
-    background:var(--bs-color-white);
+    background:#000;
   }
 
   @media (min-width: 1450px) {

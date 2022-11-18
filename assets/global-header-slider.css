@@ -80,3 +80,9 @@
 .video-with--text.placement--grid.show--video .content-section{
     display: none;
 }
+.swiper-pagination-bullet-active {
+    background-color: #000;
+}
+.swiper-pagination-bullet{
+    background-color: #000;
+}

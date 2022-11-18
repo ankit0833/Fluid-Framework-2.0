@@ -1,5 +1,4 @@
 <section data-collectionBanner class="section-content collection-hero__banner position-relative d-flex align-items-center" style="background: {{ section.settings.section_bg_color }}">
-
     <div class="{% if section.settings.fluid_layout %}container-fluid{% else %}container{% endif %} banner-breadcrumbs">
         {% render 'breadcrumbs' %}
     </div>
@@ -8,16 +7,26 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 {{ section.settings.alignment }} {{ section.settings.caption_alignment }}" style="color: {{ section.settings.txt_color }};">
                 <div class="fancy-heading">
-                    <h1 class="page-title mb-2"> 
+                    <h1 class="page-title mb-2 title_des"> 
                         {{- collection.title | escape -}}
                     </h1>
-                    {%- if section.settings.show_collection_description -%}
-                        <p class="mb-0">{{ collection.description }}</p>
+                    
+                    {%- if collection.metafields.custom.collection_descriptions != blank -%}
+                        <p class="mb-0 title_des">{{ collection.metafields.custom.collection_descriptions }}</p>
                     {%- endif -%}
+                
                 </div>
             </div>
         </div>
     </div>
+
+     <div class="collection-hero__image-container">
+        {% if collection.image !=blank %}
+                <img src="{{ collection.image | img_url: 'master' }}">
+        {% else %} 
+        <img src="{{ section.settings.collection_image | img_url: 'master' }}">
+        {% endif %} 
+      </div>
 
     {%- if section.settings.show_collection_image and collection.image -%}
         <div class="collection-hero__image-container">
@@ -55,6 +64,11 @@
         {
             "type": "header",
             "content": "Layout"
+        },
+        {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "image"
         },
         {
             "type": "checkbox",
