@@ -19,6 +19,9 @@
 span.next {
     margin: 1px 2px;
 }
+.custom-quantity{
+display:none;
+}
 </style>
   <select id="sort-by">
     {% assign sort_by = collection.sort_by | default : collection.default_sort_by %}
@@ -34,27 +37,52 @@ span.next {
     {% for product in collection.products %}
       <div class="col-3">
       {%- assign featured_image = product.selected_or_first_vailable_variant.featured_image | default: product.featured_image -%}
-        <a href="{{ featured_image | img_url: '1024x' }}">
+        <a href="{{ product.url }}">
                <img src="{{ featured_image | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}">
         </a>
         <div class="product-details">
             <h1>{{ product.title }}
             <h4>{{ product.price | money }}</h4>
         </div>  
-      </div>
-    {% endfor %}
-    
-</div> 
+        
+          {%- assign product_form_id = 'product-form-' | append: product.id -%}
+          {% assign current_variant = product.selected_or_first_available_variant %}
+           {% form 'product', product, data-productid: product.id, id: product_form_id, class: "mt-4", data-product-form: "", data-product-id: product.id, data-type: 'add-to-cart-form', data-format: format %}
+             
+            <!-- Variant selector -->
+              <select name="id">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}"
+                    {% if variant == current_variant %}selected="selected"{% endif %}
+                  >
+                    {{ variant.title }} - {{ variant.price | money }}
+                  </option>
+                {% endfor %}
+              </select>
+             <input type="hidden" name="quantity" aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}" value="1" step="1" min="1" inputmode="numeric" data-qty-input class="quantity form-control text-center" readonly>
+              <button class="btn btn-outline-dark btn-sm flex-grow-1 add_cart_btn"
+                type="submit"
+                name="add"
+                {% unless current_variant.available %}disabled{% endunless %}
+                aria-label="{{ 'products.product.add_to_cart' | t | escape }}"
+                >
+                <span class="add-text">add to cart</span>
+                <span class="spinner"></span>
+              </button>
+             {% endform %}  
+           
+         </div>
+          {% endfor %}
+        </div> 
     {%- if paginate.pages > 2 -%}
-      {% render  'pagination', paginate: paginate %}
+        {% render  'pagination', paginate: paginate %}
     {%- endif -%}
 {% endpaginate %} 
 <!-- show pagination links here -->  
 
-
 {% schema %}
   {
-    "name": "customsss collection",
+    "name": "custom collection",
     "settings": [
 
      ],
