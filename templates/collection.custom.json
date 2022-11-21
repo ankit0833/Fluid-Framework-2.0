@@ -16,6 +16,7 @@
     },
     "product-grid": {
       "type": "template-collection",
+      "disabled": true,
       "blocks": {
         "76bc1f14-318b-4055-9732-31a3ebb49e78": {
           "type": "promo-blocks",
