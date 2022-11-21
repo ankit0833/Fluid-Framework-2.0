@@ -16,3 +16,37 @@ document.querySelector('#sort-by').addEventListener('change', function(e) {
   Shopify.queryParams.sort_by = value;
   location.search = new URLSearchParams(Shopify.queryParams).toString();
 });
+
+//fetch api
+
+let add_cart_btn = document.querySelectorAll(".add_cart_btn");
+let var_cart_id  = document.querySelectorAll("[data-productid]");
+
+
+array.forEach(element => {
+  add_cart_btn.addEventListener("click", (event)=>{
+    event.preventDefault();
+    alert();
+  })
+    
+});
+
+// let formData = {
+//   'items': [{
+//    'id': 36110175633573,
+//    'quantity': 2
+//    }]
+//  };
+// fetch(window.Shopify.routes.root + 'cart/add.js', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify(formData)
+// })
+// .then(response => {
+//   return response.json();
+// })
+// .catch((error) => {
+//   console.error('Error:', error);
+// });

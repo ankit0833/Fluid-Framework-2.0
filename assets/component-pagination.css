@@ -1,9 +1,10 @@
-.pagination{
+.pagination {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  top:8px;
+  top: 9px;
+  padding-top: 50px;
 }
 
 .page-item{
