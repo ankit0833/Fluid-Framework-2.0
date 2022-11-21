@@ -1,24 +1,33 @@
+<style>
+    p.mb-0.title_des {
+        color: #fff;
+    }
+    
+    h1.page-title.mb-2.title_des {
+        color: #fff;
+    }
+</style>
+
 <section data-collectionBanner class="section-content collection-hero__banner position-relative d-flex align-items-center" style="background: {{ section.settings.section_bg_color }}">
     <div class="{% if section.settings.fluid_layout %}container-fluid{% else %}container{% endif %} banner-breadcrumbs">
         {% render 'breadcrumbs' %}
     </div>
-
-    <div class="{% if section.settings.fluid_layout %}container-fluid{% else %}container{% endif %} collection-banner__caption">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 {{ section.settings.alignment }} {{ section.settings.caption_alignment }}" style="color: {{ section.settings.txt_color }};">
-                <div class="fancy-heading">
-                    <h1 class="page-title mb-2 title_des"> 
-                        {{- collection.title | escape -}}
-                    </h1>
+        <div class="{% if section.settings.fluid_layout %}container-fluid{% else %}container{% endif %} collection-banner__caption">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 {{ section.settings.alignment }} {{ section.settings.caption_alignment }}" style="color: {{ section.settings.txt_color }};">
+                    <div class="fancy-heading">
+                        <h1 class="page-title mb-2 title_des"> 
+                            {{- collection.title | escape -}}
+                        </h1>
+                        
+                        {%- if collection.metafields.custom.collection_descriptions != blank -%}
+                            <p class="mb-0 title_des">{{ collection.metafields.custom.collection_descriptions }}</p>
+                        {%- endif -%}
                     
-                    {%- if collection.metafields.custom.collection_descriptions != blank -%}
-                        <p class="mb-0 title_des">{{ collection.metafields.custom.collection_descriptions }}</p>
-                    {%- endif -%}
-                
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
      <div class="collection-hero__image-container">
         {% if collection.image !=blank %}
@@ -55,6 +64,7 @@
     {%- endif -%}
 </section>
 
+<script src="{{ 'global.js' | asset_url }}" defer="defer"></script> 
 
 {% schema %}
 {

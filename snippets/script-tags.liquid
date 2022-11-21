@@ -72,3 +72,7 @@
 <script src="{{ 'sections.js' | asset_url }}" defer></script>
 {%- endif -%}
 
+
+{% if template =='collection.custom' %}
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+{% endif %}    

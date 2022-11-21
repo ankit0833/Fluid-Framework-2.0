@@ -60,7 +60,7 @@
         "enable_sorting": true
       }
     },
-    "1e24a85b-2028-46a9-bd1f-9ee4ca36be48": {
+    "38da16be-fe1b-4034-8c1d-878852cc1ba7": {
       "type": "custom",
       "settings": {
       }
@@ -69,6 +69,6 @@
   "order": [
     "banner",
     "product-grid",
-    "1e24a85b-2028-46a9-bd1f-9ee4ca36be48"
+    "38da16be-fe1b-4034-8c1d-878852cc1ba7"
   ]
 }
