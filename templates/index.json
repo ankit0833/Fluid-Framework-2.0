@@ -20,7 +20,7 @@
             "btn_txt": "shop now",
             "btn_link": "shopify:\/\/collections\/home-page",
             "btn_txt2": "shop product",
-            "btn_link2": "#",
+            "btn_link2": "shopify:\/\/collections\/shop",
             "btn_type": "",
             "btn_variant": "secondary",
             "btn_size": "btn-sm"
